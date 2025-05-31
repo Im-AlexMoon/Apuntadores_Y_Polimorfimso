@@ -5,7 +5,7 @@
  * @file MatrixOp.h.h
  * @brief Definición de TemplateClass.
  * @date YYYY-MM-DD
- * @author Camilo Duque
+ * @author Alexander Luna
  *
  */
 #pragma once
