@@ -1,40 +1,39 @@
 /**
- * @file TemplateClass.cpp
- * @brief Implementación de TemplateClass.
- * @date YYYY-MM-DD
- * @author Alexander Luna
- *
+ * @file      MatrixOp.cpp
+ * @brief     Implementación de MatrixOp (Ej. A1).
+ * @date      2025-05-30
+ * @author    Alexander Luna
  */
-
 #include "MatrixOp.h"
 
-#include <iostream>
-
 MatrixOp::MatrixOp(int rows, int cols)
-    : rows_(rows), cols_(cols), data_(nullptr) {
-    if (rows_ <= 0 || cols_ <= 0) {
-        throw std::invalid_argument(
-            "Rows and columns must be positive integers.");
-    }
-    data_ = new double[rows_ * cols_];
-    for (int i = 0; i < rows_ * cols_; ++i) {
-        data_[i] = 0.0;  // Initialize all elements to zero
-    }
-}
-MatrixOp::~MatrixOp() {
-    delete[] data_;   // Free allocated memory
-    data_ = nullptr;  // Avoid dangling pointer
+    : data_(nullptr), rows_(rows), cols_(cols)
+{
+    if (rows_ <= 0 || cols_ <= 0)
+        throw std::invalid_argument("rows and cols must be positive");
+
+    data_ = new double[static_cast<std::size_t>(rows_) * cols_]{};
 }
 
-// Setter
-void MatrixOp::set(int i, int j, double v) {
+MatrixOp::~MatrixOp()
+{
+    delete[] data_;
+    data_ = nullptr;
+}
+
+// getters / setters
+void MatrixOp::set(int i, int j, double v)
+{
     if (i < 0 || i >= rows_ || j < 0 || j >= cols_)
-        throw std::out_of_range("Index out of range.");
+        throw std::out_of_range("MatrixOp::set index out of range");
+
     data_[i * cols_ + j] = v;
 }
-// Getter
-double MatrixOp::get(int i, int j) const {
+
+double MatrixOp::get(int i, int j) const
+{
     if (i < 0 || i >= rows_ || j < 0 || j >= cols_)
-        throw std::out_of_range("Index out of range.");
+        throw std::out_of_range("MatrixOp::get index out of range");
+
     return data_[i * cols_ + j];
 }
