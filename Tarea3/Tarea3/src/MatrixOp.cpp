@@ -2,7 +2,7 @@
  * @file TemplateClass.cpp
  * @brief Implementación de TemplateClass.
  * @date YYYY-MM-DD
- * @author Camilo Duque
+ * @author Alexander Luna
  *
  */
 
